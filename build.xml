@@ -1,0 +1,18 @@
+<project name="java tasks" default="run">
+<target name="compile" description="compile the java files">
+<mkdir dir="build/classes"/>
+<javac srcdir="src" destdir="build/classes"/>
+</target>
+<target name="package" depends="compile" description="packaging the the files">
+<mkdir dir="build/jars"/>
+<jar destfile="build/jars/EnhancedFor.jar" basedir="build/classes">
+<manifest>
+<attribute name="Main-Class" value="EnhancedFor"/>
+</manifest>
+</jar>
+</target>
+<target name="run" depends="package" description="run the package">
+<java jar="build/jars/EnhancedFor.jar" fork="true"/>
+</target>
+</project>
+
